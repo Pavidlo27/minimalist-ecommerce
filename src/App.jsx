@@ -1,7 +1,7 @@
 import React from 'react'
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom'
 import Layout from './components/Layout'
-import Home, { loader as homeLoader } from './Pages/Home/Home'
+import Home from './Pages/Home/Home'
 import Categories, { loader as categoriesLoader } from './Pages/Categories/Categories'
 import About from './Pages/About'
 import ProductDetail, { loader as productDetailLoader } from './Pages/Categories/ProductDetail'
@@ -12,7 +12,6 @@ const App = () => {
       <Route
         index
         element={<Home />}
-        loader={homeLoader}
       />
       <Route path='about' element={<About />} />
       <Route

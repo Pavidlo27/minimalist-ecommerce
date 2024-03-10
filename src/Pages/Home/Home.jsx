@@ -1,35 +1,38 @@
 import React from 'react'
 import HomeMain from './HomeMain'
 
-import { getVans } from '../../api'
-import { useLoaderData } from 'react-router-dom'
 import HomeProud from './HomeProud'
 import HomeBanner from './HomeBanner'
 import HomeCarousel from './HomeCarousel'
 
-export function loader() {
-  return getVans()
-}
+import bannerImg1 from '../../assets/images/bannerImg1.jpg'
+import bannerImg2 from '../../assets/images/bannerImg2.jpg'
+import FAQ from '../../components/FAQ'
+
+
 
 const Home = () => {
-  const products = useLoaderData()
   return (
     <article>
       <HomeMain />
-      <HomeProud products={products} />
+      <HomeProud />
       <HomeBanner
         bannerTitle='Creative harmonious living'
         bannerText='RAOUF Products are all made 
         to standard sizes so that you can mix and match 
         them freely.'
+        bannerImg={bannerImg1}
       />
-      <HomeCarousel products={products} />
+      <HomeCarousel />
       <HomeBanner
         bannerTitle='Comfortable & Elegante Living'
         bannerText='RAOUF Products are all made to 
         standard sizes so that you can mix and match 
         them freely.'
+        bannerImg={bannerImg2}
+        reverse={true}
       />
+      <FAQ />
     </article>
   )
 }

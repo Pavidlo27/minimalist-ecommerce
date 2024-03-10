@@ -12,11 +12,11 @@ const Header = () => {
     color: "#161616"
   }
   return (
-    <header className='p-5 flex justify-between items-center'>
+    <header className='p-5 lg:px-14 flex justify-between items-center'>
       <Link to='/'>
         <img className='w-20' src={logo} alt="logo" />
       </Link>
-      <nav className='grid grid-flow-col gap-3 items-center text-xl'>
+      <nav className='grid grid-flow-col gap-3 lg:gap-5 items-center text-xl'>
         <NavLink
           to='categories'
           className='hover:underline hover:font-bold'

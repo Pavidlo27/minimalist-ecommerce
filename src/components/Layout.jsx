@@ -9,7 +9,7 @@ const Layout = () => {
     <div>
       <GoToTop />
       <Header />
-      <main className='p-5 overflow-hidden'>
+      <main className='p-5 lg:px-14 lg:pt-0 overflow-hidden'>
         <Outlet />
       </main>
       <Footer />

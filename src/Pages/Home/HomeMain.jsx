@@ -8,28 +8,29 @@ import { Link } from 'react-router-dom'
 const HomeMain = () => {
   return (
     <section className='mb-20'>
-      <ul className='grid grid-cols-2 grid-rows-2 gap-3 text-3xl text-white font-semibold'>
-        <li className='relative'>
+      <ul className='grid grid-cols-2 grid-rows-2 gap-3 text-2xl text-white font-semibold
+      lg:grid-cols-[2fr_1fr_1fr] lg:text-4xl'>
+        <li className='relative lg:row-start-1 lg:row-end-3'>
           <Link to='categories'>
             <img
-              className='w-full h-60 object-cover brightness-75 hover:brightness-50 duration-500 cursor-pointer'
+              className='w-full h-60 lg:h-[492px] object-cover brightness-75 hover:brightness-50 duration-500 cursor-pointer'
               src={img1}
-              alt=""
+              alt="Live Comfortably"
             />
             <span
-              className='absolute bottom-5 left-5 cursor-pointer'
+              className='absolute bottom-5 left-3 cursor-pointer'
             >Live Comfortably</span>
           </Link>
         </li>
-        <li className='relative'>
+        <li className='relative lg:row-start-1 lg:row-end-3'>
           <Link to='categories?type=skin care'>
             <img
-              className='w-full h-60 object-cover brightness-75 hover:brightness-50 duration-500 cursor-pointer'
+              className='w-full h-60 lg:h-[492px] object-cover brightness-75 hover:brightness-50 duration-500 cursor-pointer'
               src={img2}
-              alt=""
+              alt="Skincare"
             />
             <span
-              className='absolute bottom-5 left-5 cursor-pointer'
+              className='absolute bottom-5 left-3 cursor-pointer'
             >Skincare</span>
           </Link>
         </li>
@@ -38,22 +39,23 @@ const HomeMain = () => {
             <img
               className='w-full h-60 object-cover brightness-75 hover:brightness-50 duration-500 cursor-pointer'
               src={img4}
-              alt=""
+              alt="Kitchen"
             />
             <span
-              className='absolute bottom-5 left-5 cursor-pointer'
+              className='absolute bottom-5 left-3 cursor-pointer'
             >Kitchen</span>
           </Link>
         </li>
-        <li className='relative'>
+        <li className='relative lg:col-start-3 lg:col-end-3 lg:overflow-hidden'>
           <Link to='categories?type=electronics'>
             <img
-              className='w-full h-60 object-cover brightness-75 hover:brightness-50 duration-500 cursor-pointer'
+              className='w-full h-60 object-cover brightness-75 
+              hover:brightness-50 duration-500 cursor-pointer'
               src={img3}
-              alt=""
+              alt="Electronics"
             />
             <span
-              className='absolute bottom-5 left-5 cursor-pointer'
+              className='absolute bottom-5 left-3 cursor-pointer'
             >Electronics</span>
           </Link>
         </li>

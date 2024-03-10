@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
     <footer className='p-5 h-40 flex flex-col justify-center items-center bg-black text-lg text-white '>
       <div className='grid grid-flow-col gap-10'>
-        <a href=''>About</a>
-        <a href=''>FAQs</a>
+        <Link to='about'>About</Link>
+        <a href='#faqs'>FAQs</a>
         <a href=''>News</a>
         <a href=''>Contact Us</a>
       </div>
