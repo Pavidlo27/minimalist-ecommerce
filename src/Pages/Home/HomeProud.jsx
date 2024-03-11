@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import { getProudProds } from '../../api'
 
-const prods = await getProudProds()
 
 const HomeProud = () => {
+
+  const [prods, setProds] = useState([])
+  const [error, setError] = useState()
+  useEffect(() => {
+    async function loadProds() {
+      try {
+        const data = await getProudProds()
+        setProds(data)
+      } catch (err) {
+        setError(err)
+      }
+    }
+
+    loadProds()
+  }, [])
+
   const productElements = prods.map(prod => (
     <Link
       to={`/categories/${prod.id}`}
@@ -24,6 +39,7 @@ const HomeProud = () => {
   return (
     <section>
       <h2 className='my-10 text-2xl font-semibold'>Products we are proud of</h2>
+      {error && <h1 className='text-xl'>{error}</h1>}
       <div className='grid gap-5 lg:grid-cols-4'>
         {productElements}
       </div>

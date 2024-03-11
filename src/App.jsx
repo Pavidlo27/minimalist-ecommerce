@@ -5,6 +5,7 @@ import Home from './Pages/Home/Home'
 import Categories, { loader as categoriesLoader } from './Pages/Categories/Categories'
 import About from './Pages/About'
 import ProductDetail, { loader as productDetailLoader } from './Pages/Categories/ProductDetail'
+import NotFound from './Pages/NotFound'
 
 const App = () => {
   const router = createBrowserRouter(createRoutesFromElements(
@@ -24,6 +25,7 @@ const App = () => {
         element={<ProductDetail />}
         loader={productDetailLoader}
       />
+      <Route path='*' element={<NotFound />} />
     </Route>
   ))
 

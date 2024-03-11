@@ -8,10 +8,23 @@ import 'swiper/css/free-mode'
 
 import { getNewProds } from '../../api';
 
-const prods = await getNewProds()
 
-export default ({ products }) => {
+export default () => {
   const [slidesPerViev, SetSlidesPerViev] = React.useState(4)
+  const [prods, setProds] = useState([])
+  const [error, setError] = React.useState()
+  React.useEffect(() => {
+    async function loadProds() {
+      try {
+        const data = await getNewProds()
+        setProds(data)
+      } catch (err) {
+        setError(err)
+      }
+    }
+
+    loadProds()
+  }, [])
 
   const productElements = prods.map(prod => (
     <SwiperSlide key={prod.id}>
@@ -46,6 +59,7 @@ export default ({ products }) => {
     <div>
       <h2 className='text-2xl font-semibold mb-10'
       >Trending Now</h2>
+      {error && <h1 className='text-xl'>{error}</h1>}
       <Swiper
         modules={[Navigation, FreeMode, Autoplay]}
         autoplay
