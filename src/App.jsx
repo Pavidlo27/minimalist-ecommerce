@@ -6,6 +6,7 @@ import Categories, { loader as categoriesLoader } from './Pages/Categories/Categ
 import About from './Pages/About'
 import ProductDetail, { loader as productDetailLoader } from './Pages/Categories/ProductDetail'
 import NotFound from './Pages/NotFound'
+import Error from './components/Error'
 
 const App = () => {
   const router = createBrowserRouter(createRoutesFromElements(
@@ -19,11 +20,13 @@ const App = () => {
         path='categories'
         element={<Categories />}
         loader={categoriesLoader}
+        errorElement={<Error />}
       />
       <Route
         path='categories/:id'
         element={<ProductDetail />}
         loader={productDetailLoader}
+        errorElement={<Error />}
       />
       <Route path='*' element={<NotFound />} />
     </Route>

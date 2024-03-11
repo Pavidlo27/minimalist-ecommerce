@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Navigation, Autoplay } from 'swiper/modules'
+import { FreeMode, Navigation } from 'swiper/modules'
 
 import 'swiper/css';
 import 'swiper/css/free-mode'
@@ -61,8 +61,7 @@ export default () => {
       >Trending Now</h2>
       {error && <h1 className='text-xl'>{error}</h1>}
       <Swiper
-        modules={[Navigation, FreeMode, Autoplay]}
-        autoplay
+        modules={[Navigation, FreeMode]}
         navigation
         freeMode={true}
         spaceBetween={20}
