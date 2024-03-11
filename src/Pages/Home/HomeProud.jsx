@@ -40,7 +40,7 @@ const HomeProud = () => {
     <section>
       <h2 className='my-10 text-2xl font-semibold'>Products we are proud of</h2>
       {error && <h1 className='text-xl'>{error}</h1>}
-      <div className='grid gap-5 lg:grid-cols-4'>
+      <div className='grid gap-5 md:grid-cols-2 lg:grid-cols-4'>
         {productElements}
       </div>
     </section>
