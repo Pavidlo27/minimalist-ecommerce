@@ -8,7 +8,6 @@ With a focus on simplicity and clean design, this store prioritize user experien
 ## Build With:
 - React js
 - Tailwind CSS
-- Firebase
 
 ## What i learned from this project
 - Enhanced knowledge in Flexbox and Grid.
