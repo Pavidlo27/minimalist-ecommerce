@@ -1,7 +1,7 @@
 ![minimalistEcommerceIcon](https://github.com/luk-aa/minimalist-ecommerce/assets/86773254/be1e917a-2999-42a5-860e-6656f8fe004f)
 
 ## About the project
-With a focus on simplicity and clean design, this store prioritize user experience, making it easy for customers to find and purchase the products they need.
+This is a minimalist e-commerce website built with React and Tailwind CSS. With a focus on simplicity and clean design, this store prioritize user experience, making it easy for customers to find and purchase the products they need.
 
 👉 Live Demo: [Minimalist Ecommerce](https://minimalist-ecommerce-shgh.vercel.app/)
 
