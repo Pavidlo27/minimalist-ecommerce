@@ -3,7 +3,7 @@
 ## About the project
 With a focus on simplicity and clean design, this store prioritize user experience, making it easy for customers to find and purchase the products they need.
 
-👉 Live Demo: [Minimalist Ecommerce]([URL](https://minimalist-ecommerce-shgh.vercel.app/)https://minimalist-ecommerce-shgh.vercel.app/)
+👉 Live Demo: [Minimalist Ecommerce](https://minimalist-ecommerce-shgh.vercel.app/)
 
 ## Build With:
 - React js
