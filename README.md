@@ -15,3 +15,5 @@ This is a minimalist e-commerce website built with React and Tailwind CSS. With 
 - Learned to code cool sliders.
 - I strengthened my knowledge in React js, JavaScript and storing and managing applications data using Firestore database.
 
+![ecommerceImg](https://github.com/luk-aa/minimalist-ecommerce/assets/86773254/16a0427b-006a-459b-bd2a-236009c75bf2)
+
