@@ -8,6 +8,8 @@ const HomeProud = () => {
 
   const [prods, setProds] = useState([])
   const [error, setError] = useState()
+  const [showMore, setShowMore] = useState(false)
+
   useEffect(() => {
     async function loadProds() {
       try {
@@ -21,20 +23,26 @@ const HomeProud = () => {
     loadProds()
   }, [])
 
-  const productElements = prods.map(prod => (
-    <Link
-      to={`/categories/${prod.id}`}
-      key={prod.id}
-    >
-      <div className='border-2 border-gray-300 hover:border-black'>
-        <img src={prod.firstImg} alt="" />
-        <div className='p-3'>
-          <h3 className='text-lg'>{prod.name}</h3>
-          <p className='text-lg font-semibold'>{prod.price}.00$</p>
+  const handleShowMore = () => {
+    setShowMore(prev => !prev)
+  }
+
+  const productElements = prods
+    .slice(0, showMore ? prods.length : 4)
+    .map(prod => (
+      <Link
+        to={`/categories/${prod.id}`}
+        key={prod.id}
+      >
+        <div className='border-2 border-gray-300 hover:border-black'>
+          <img src={prod.firstImg} alt="" />
+          <div className='p-3'>
+            <h3 className='text-lg'>{prod.name}</h3>
+            <p className='text-lg font-semibold'>{prod.price}.00$</p>
+          </div>
         </div>
-      </div>
-    </Link>
-  ))
+      </Link>
+    ))
 
   return (
     <section>
@@ -43,6 +51,12 @@ const HomeProud = () => {
       <div className='grid gap-5 md:grid-cols-2 lg:grid-cols-4'>
         {productElements}
       </div>
+      <button
+        className='mt-5 text-black text-xl font-semibold hover:underline'
+        onClick={handleShowMore}
+      >
+        {showMore ? 'Show Less' : 'Show More...'}
+      </button>
     </section>
   )
 }
