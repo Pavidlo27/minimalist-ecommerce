@@ -3,6 +3,7 @@ import { useShoppingCart } from '../context/ShoppingCartContext';
 import CartItem from './CartItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 
 const ShoppingCart = ({ isOpen }) => {
@@ -46,7 +47,12 @@ const ShoppingCart = ({ isOpen }) => {
             <div className='text-center text-2xl mt-5'>
               Total: {totalPrice}.00$
             </div>
-            <button className='w-full h-14 text-xl text-white bg-[#b6002c]'>BUY NOW</button>
+            <Link
+              to='/contact'
+              onClick={closeCart}
+            >
+              <button className='w-full h-14 text-xl text-white bg-[#b6002c]'>BUY NOW</button>
+            </Link>
           </div>
         )}
       </div>

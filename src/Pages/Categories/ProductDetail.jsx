@@ -68,7 +68,9 @@ const ProductDetail = () => {
               className='w-full h-14 text-xl my-5 border-2 border-black'
               onClick={() => addToCart(product, quantity)}
             >ADD TO CART</button>
-            <button className='w-full h-14 text-xl text-white bg-[#b6002c]'>BUY NOW</button>
+            <Link to='/contact'>
+              <button className='w-full h-14 text-xl text-white bg-[#b6002c]'>BUY NOW</button>
+            </Link>
           </div>
         </div>
       </div>
