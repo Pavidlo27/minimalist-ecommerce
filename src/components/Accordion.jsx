@@ -6,6 +6,7 @@ const Accordion = ({ title, answer }) => {
     <div
       className="bg-white"
       onClick={() => setActive(prev => !prev)}
+      data-aos="fade-up"
     >
       <div className={`text-lg font-medium flex px-6 py-4 cursor-pointer
       justify-between items-center border-2 ${active ? 'bg-black border-black' : ''} hover:border-black duration-300`}>

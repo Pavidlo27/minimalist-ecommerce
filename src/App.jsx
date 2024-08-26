@@ -8,6 +8,9 @@ import ProductDetail, { loader as productDetailLoader } from './Pages/Categories
 import NotFound from './Pages/NotFound'
 import Error from './components/Error'
 
+import './App.css'
+import ContactUs from './Pages/contact/Index'
+
 const App = () => {
   const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<Layout />}>
@@ -16,6 +19,7 @@ const App = () => {
         element={<Home />}
       />
       <Route path='about' element={<About />} />
+      <Route path='contact' element={<ContactUs />} />
       <Route
         path='categories'
         element={<Categories />}

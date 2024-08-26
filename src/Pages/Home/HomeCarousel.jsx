@@ -29,7 +29,7 @@ export default () => {
   const productElements = prods.map(prod => (
     <SwiperSlide key={prod.id}>
       <Link to={`/categories/${prod.id}`} >
-        <div key={prod.id} className=' border-2 border-gray-300 hover:border-black'>
+        <div key={prod.id} className=' border-2 border-gray-300 hover:border-black' data-aos='zoom-in-up'>
           <img src={prod.firstImg} alt="" />
           <div className='p-3'>
             <h3 className='text-lg '>{prod.name}</h3>
@@ -57,7 +57,9 @@ export default () => {
 
   return (
     <div>
-      <h2 className='text-2xl font-semibold mb-10'
+      <h2
+        className='text-2xl font-semibold mb-10'
+        data-aos='fade-up'
       >Trending Now</h2>
       {error && <h1 className='text-xl'>{error}</h1>}
       <Swiper

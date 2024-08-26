@@ -5,7 +5,7 @@ import Accordion from "../components/Accordion"
 const FAQ = () => {
   return (
     <div className="my-20" id='faqs'>
-      <h3 className="text-2xl font-semibold my-3">Frequently Asked Questions</h3>
+      <h3 className="text-2xl font-semibold my-3" data-aos="fade-up">Frequently Asked Questions</h3>
       <div className="mt-8 text-start grid gap-2 lg:mt-10">
         <Accordion
           title='1. What is the purpose of this e-commerce web app?'

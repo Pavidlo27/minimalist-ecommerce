@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
+
 import { getProudProds } from '../../api'
 
 
@@ -33,6 +34,7 @@ const HomeProud = () => {
       <Link
         to={`/categories/${prod.id}`}
         key={prod.id}
+        data-aos='zoom-in-up'
       >
         <div className='border-2 border-gray-300 hover:border-black'>
           <img src={prod.firstImg} alt="" />
@@ -46,7 +48,7 @@ const HomeProud = () => {
 
   return (
     <section>
-      <h2 className='my-10 text-2xl font-semibold'>Products we are proud of</h2>
+      <h2 className='my-10 text-2xl font-semibold' data-aos="fade-up">Products we are proud of</h2>
       {error && <h1 className='text-xl'>{error}</h1>}
       <div className='grid gap-5 md:grid-cols-2 lg:grid-cols-4'>
         {productElements}

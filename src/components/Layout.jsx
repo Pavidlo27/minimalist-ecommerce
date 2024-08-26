@@ -1,19 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
 import GoToTop from './GoToTop'
+import { ShoppingCartProvider } from '../context/ShoppingCartContext'
+import { Toaster } from './ui/sonner'
+import Preloader from './Preloader'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const Layout = () => {
+
+  //AOS initialization 
+  useEffect(() => {
+    AOS.init({
+      once: true,
+    });
+  }, []);
+
   return (
-    <div>
+    <ShoppingCartProvider>
+      <Preloader />
       <GoToTop />
       <Header />
       <main className='p-5 lg:px-14 lg:pt-0 overflow-hidden'>
         <Outlet />
       </main>
+      <Toaster />
       <Footer />
-    </div>
+    </ShoppingCartProvider>
   )
 }
 

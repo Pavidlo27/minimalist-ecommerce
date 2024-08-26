@@ -1,0 +1,32 @@
+.preloader-wrap {
+  position: fixed;
+  z-index: 1222;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.preloader-wrap.loaded {
+  display: none;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  animation: spin 5s linear infinite;
+}
+.logo-header {
+  animation: spin 60s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

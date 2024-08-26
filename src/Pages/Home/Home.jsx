@@ -10,8 +10,8 @@ import bannerImg2 from '../../assets/images/bannerImg2.jpg'
 import FAQ from '../../components/FAQ'
 
 
-
 const Home = () => {
+
   return (
     <article>
       <HomeMain />

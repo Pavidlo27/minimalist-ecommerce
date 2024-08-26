@@ -1,6 +1,7 @@
 import React from 'react'
 import { getProds } from '../../api'
 import { Await, Link, defer, useLoaderData, useSearchParams } from 'react-router-dom'
+import SkeletonCategories from '@/components/SkeletonCategories'
 export function loader() {
   return defer({ prods: getProds() })
 }
@@ -35,6 +36,7 @@ const Categories = () => {
           search: `?${searchParams.toString()}`,
           type: typeFilter
         }}
+        data-aos='fade-up'
       >
         <div key={prod.id} className='border-2 border-gray-300 hover:border-black'>
           <img src={prod.firstImg} alt="" />
@@ -85,9 +87,13 @@ const Categories = () => {
   }
 
   return (
-    <div>
-      <h1 className='w-fit text-3xl font-semibold m-auto'>{typeFilter ? typeFilter.toUpperCase() : 'ALL'}</h1>
-      <React.Suspense fallback={<h1 className='h-screen'>Loading Products...</h1>}>
+    <div className='min-h-screen'>
+      <h1
+        className='w-fit text-3xl font-semibold m-auto'
+      >
+        {typeFilter ? typeFilter.toUpperCase() : 'ALL'}
+      </h1>
+      <React.Suspense fallback={<SkeletonCategories />}>
         <Await resolve={dataPromise.prods}>
           {renderProdElements}
         </Await>

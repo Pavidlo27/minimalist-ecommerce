@@ -5,6 +5,7 @@ import { useLoaderData, useLocation, Link } from 'react-router-dom'
 
 import ProductCarousel from './ProductCarousel'
 import HomeCarousel from '../Home/HomeCarousel'
+import { useShoppingCart } from '../../context/ShoppingCartContext'
 
 export function loader({ params }) {
   return getProd(params.id)
@@ -15,6 +16,8 @@ const ProductDetail = () => {
   const location = useLocation()
   const [quantity, setQuantity] = useState(1)
   const [price, setPrice] = useState(product.price)
+
+  const { addToCart } = useShoppingCart()
 
   function plus() {
     setQuantity(prev => prev + 1)
@@ -47,20 +50,24 @@ const ProductDetail = () => {
             <ul className='flex justify-center items-center my-5'>
               <li>
                 <button
-                  onClick={minus}
-                  className='w-14 h-14 border-2 border-gray-300 active:border-black'
+                  onClick={() => minus()}
+                  disabled={quantity === 1}
+                  className={`w-14 h-14 border-2 border-gray-300 active:border-black ${quantity === 1 && 'opacity-40'}`}
                 >-</button>
               </li>
               <li className='w-14 h-14 border-y-2 border-gray-300 flex justify-center items-center'>{quantity}</li>
               <li>
                 <button
-                  onClick={plus}
+                  onClick={() => plus()}
                   className='w-14 h-14 border-2 border-gray-300 active:border-black'
                 >+</button>
               </li>
             </ul>
             <span className='mb-10 block'>{price}.00$</span>
-            <button className='w-full h-14 text-xl my-5 border-2 border-black'>ADD TO CART</button>
+            <button
+              className='w-full h-14 text-xl my-5 border-2 border-black'
+              onClick={() => addToCart(product, quantity)}
+            >ADD TO CART</button>
             <button className='w-full h-14 text-xl text-white bg-[#b6002c]'>BUY NOW</button>
           </div>
         </div>
