@@ -20,7 +20,7 @@ const ShoppingCart = ({ isOpen }) => {
       {isOpen &&
         <div
           onClick={closeCart}
-          className={`fixed inset-0 bg-black bg-opacity-70 z-40`}
+          className={`fixed inset-0 w-full bg-black bg-opacity-70 z-40`}
         ></div>
       }
 
