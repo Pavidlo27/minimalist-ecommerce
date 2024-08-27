@@ -13,7 +13,7 @@ import { useShoppingCart } from "@/context/ShoppingCartContext";
 
 export default function MessageForm() {
   const [loader, setLoader] = React.useState(false);
-  const { cart } = useShoppingCart();
+  const { cart, totalPrice } = useShoppingCart();
   // Define form using react-hook-form
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -23,6 +23,7 @@ export default function MessageForm() {
       number: "",
       message: "",
       products: "",
+      totalPrice: "",
     },
   });
 
@@ -30,15 +31,17 @@ export default function MessageForm() {
   function sendEmail(data) {
     setLoader(true);
     const cartSummary = cart
-      .map(item => `${item.name} (Qty: ${item.quantity}) - ${item.price}`)
+      .map(item => `${item.name} (Qty: ${item.quantity}) - ${item.price}.00$`)
       .join("\n");
+
     // Convert form data into an object EmailJS can use
     const emailData = {
       name: data.name,
       email: data.email,
       number: data.number,
       message: data.message,
-      products: cartSummary
+      products: cartSummary,
+      totalPrice: totalPrice
     };
     console.log(emailData);
 

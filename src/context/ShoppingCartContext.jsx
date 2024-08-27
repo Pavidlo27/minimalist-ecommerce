@@ -44,6 +44,11 @@ export function ShoppingCartProvider({ children }) {
     });
   };
 
+  const totalPrice = cart.reduce((total, cartItem) => {
+    const item = cart.find(i => i.id === cartItem.id)
+    return total + (item?.price || 0) * cartItem.quantity
+  }, 0)
+
   const removeFromCart = (id) => {
     setCart((prevCart) => {
       return prevCart.filter((item) => item.id !== id);
@@ -54,7 +59,7 @@ export function ShoppingCartProvider({ children }) {
 
 
   return (
-    <ShoppingCartContext.Provider value={{ addToCart, removeFromCart, closeCart, openCart, cart, cartQuantity }}>
+    <ShoppingCartContext.Provider value={{ addToCart, removeFromCart, closeCart, openCart, cart, cartQuantity, totalPrice }}>
       {children}
       <ShoppingCart isOpen={isOpen} />
     </ShoppingCartContext.Provider>

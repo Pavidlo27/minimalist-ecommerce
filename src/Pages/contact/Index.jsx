@@ -4,12 +4,12 @@ import Content from './Content'
 const ContactUs = () => {
   return (
     <div className='md:flex'>
-      <div className='md:w-1/2'>
-        <h2 className='text-4xl font-semibold'>Minimalist Store</h2>
+      <div className='md:w-1/2 mt-10 md:mt-0 text-center'>
+        <h2 className='text-3xl font-semibold '>Contact Details</h2>
         <Content />
       </div>
-      <div className='md:w-1/2 mt-10 md:mt-0'>
-        <h2 className='text-3xl font-semibold'>Contact Us</h2>
+      <div className='md:w-1/2 text-center'>
+        <h2 className='text-3xl font-semibold'>Place Your Order</h2>
         <MessageForm />
       </div>
     </div>

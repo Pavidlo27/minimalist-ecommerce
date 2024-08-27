@@ -7,12 +7,9 @@ import { Link } from 'react-router-dom';
 
 
 const ShoppingCart = ({ isOpen }) => {
-  const { closeCart, cart } = useShoppingCart();
+  const { closeCart, cart, totalPrice } = useShoppingCart();
 
-  const totalPrice = cart.reduce((total, cartItem) => {
-    const item = cart.find(i => i.id === cartItem.id)
-    return total + (item?.price || 0) * cartItem.quantity
-  }, 0)
+
 
   return (
     <>

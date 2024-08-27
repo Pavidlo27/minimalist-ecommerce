@@ -10,8 +10,8 @@ const HomeMain = () => {
     <section className='mb-20'>
       <ul className='grid grid-cols-2 grid-rows-2 gap-3 text-2xl text-white font-semibold
       lg:grid-cols-[2fr_1fr_1fr] lg:text-4xl'>
-        <li className='relative lg:row-start-1 lg:row-end-3'>
-          <Link to='categories'>
+        <li className='relative lg:row-start-1 lg:row-end-3' data-aos="zoom-in">
+          <Link to='categories' >
             <img
               className='w-full h-60 lg:h-[492px] object-cover brightness-75 hover:brightness-50 duration-500 cursor-pointer'
               src={img1}
@@ -22,7 +22,7 @@ const HomeMain = () => {
             >Live Comfortably</span>
           </Link>
         </li>
-        <li className='relative lg:row-start-1 lg:row-end-3'>
+        <li className='relative lg:row-start-1 lg:row-end-3' data-aos="zoom-in">
           <Link to='categories?type=skin care'>
             <img
               className='w-full h-60 lg:h-[492px] object-cover brightness-75 hover:brightness-50 duration-500 cursor-pointer'
@@ -34,7 +34,7 @@ const HomeMain = () => {
             >Skincare</span>
           </Link>
         </li>
-        <li className='relative'>
+        <li className='relative' data-aos="zoom-in">
           <Link to='categories?type=kitchen'>
             <img
               className='w-full h-60 object-cover brightness-75 hover:brightness-50 duration-500 cursor-pointer'
@@ -46,7 +46,7 @@ const HomeMain = () => {
             >Kitchen</span>
           </Link>
         </li>
-        <li className='relative lg:col-start-3 lg:col-end-3 lg:overflow-hidden'>
+        <li className='relative lg:col-start-3 lg:col-end-3 lg:overflow-hidden' data-aos="zoom-in">
           <Link to='categories?type=electronics'>
             <img
               className='w-full h-60 object-cover brightness-75 
