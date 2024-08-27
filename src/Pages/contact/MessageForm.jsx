@@ -1,96 +1,91 @@
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { formSchema } from "./Zschema"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+import React from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { formSchema } from "./Zschema";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 import emailjs from '@emailjs/browser';
-
-
+import { toast } from "sonner";
+import { useShoppingCart } from "@/context/ShoppingCartContext";
 
 export default function MessageForm() {
-  // 1. Define form.
+  const [loader, setLoader] = React.useState(false);
+  const { cart } = useShoppingCart();
+  // Define form using react-hook-form
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       email: "",
       number: "",
+      message: "",
+      products: "",
     },
-  })
+  });
 
-  // function onSubmit(values) {
-  //   console.log(values)
-  // }
+  // Function to handle email sending
+  function sendEmail(data) {
+    setLoader(true);
+    const cartSummary = cart
+      .map(item => `${item.name} (Qty: ${item.quantity}) - ${item.price}`)
+      .join("\n");
+    // Convert form data into an object EmailJS can use
+    const emailData = {
+      name: data.name,
+      email: data.email,
+      number: data.number,
+      message: data.message,
+      products: cartSummary
+    };
+    console.log(emailData);
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs.sendForm('service_9cw2qph', 'template_71h6t14', e.target, 'R3AW7mLsyVgGJjfX3',)
+    emailjs.send('service_9cw2qph', 'template_71h6t14', emailData, 'R3AW7mLsyVgGJjfX3')
       .then((result) => {
         console.log(result.text);
-        alert('Message sent successfully!');
+        toast.success('Message sent successfully!');
+        setLoader(false);
+        form.reset(); // Reset the form after submission
       }, (error) => {
         console.log(error.text);
-        alert('Failed to send message.');
+        toast.error('Failed to send message.');
       });
 
-    e.target.reset(); // Reset the form after submission
-  };
+  }
+
+  const fields = [
+    { name: "name", placeholder: "Your Name *", component: Input },
+    { name: "email", placeholder: "Your Email Address *", component: Input },
+    { name: "number", placeholder: "Your Number *", component: Input },
+    { name: "message", placeholder: "Write Your Message Here...", component: Textarea },
+  ];
 
   return (
     <Form {...form}>
-      <form onSubmit={sendEmail} className="space-y-4 mt-5">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <>
+      <form onSubmit={form.handleSubmit(sendEmail)} className="space-y-4 mt-5">
+        {fields.map((field) => (
+          <FormField
+            key={field.name}
+            control={form.control}
+            name={field.name}
+            render={({ field: formField }) => (
               <FormItem>
-                {/* <FormLabel>Name</FormLabel> */}
                 <FormControl>
-                  <Input placeholder="Your Name *" {...field} />
+                  <field.component
+                    placeholder={field.placeholder}
+                    {...formField}
+                    disabled={loader} // Disable inputs when loading
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
-            </>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <>
-              <FormItem>
-                {/* <FormLabel>Email</FormLabel> */}
-                <FormControl>
-                  <Input placeholder="Your Email Address *" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            </>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="number"
-          render={({ field }) => (
-            <>
-              <FormItem>
-                {/* <FormLabel>Email</FormLabel> */}
-                <FormControl>
-                  <Input placeholder="Your Number *" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            </>
-          )}
-        />
-        <Textarea placeholder="Write Your Message Here..." name="message" />
-        <Button type="submit">Submit</Button>
+            )}
+          />
+        ))}
+        <Button disabled={loader} type="submit">{loader ? 'Sending...' : 'Submit'}</Button>
       </form>
     </Form>
-  )
+  );
 }
