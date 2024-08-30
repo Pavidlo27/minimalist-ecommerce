@@ -69,7 +69,10 @@ const ProductDetail = () => {
               onClick={() => addToCart(product, quantity)}
             >ADD TO CART</button>
             <Link to='/contact'>
-              <button className='w-full h-14 text-xl text-white bg-[#b6002c]'>BUY NOW</button>
+              <button
+                className='w-full h-14 text-xl text-white bg-[#b6002c]'
+                onClick={() => addToCart(product, quantity)}
+              >BUY NOW</button>
             </Link>
           </div>
         </div>
