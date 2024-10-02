@@ -16,8 +16,8 @@ const Header = () => {
   return (
     <header className='px-2 py-3 lg:px-14 flex justify-between items-center'>
       <nav className='grid grid-flow-col gap-3 lg:gap-5 items-center text-xl'>
-        <Link to='/' className='logo-header mr-2'>
-          <img className='w-12 sm:w-16' src={logo} alt="logo" />
+        <Link to='/' className='logo-header w-12 sm:w-16 mr-2'>
+          <img src={logo} alt="logo" />
         </Link>
         <NavLink
           to='categories'
@@ -78,7 +78,7 @@ const Header = () => {
       <div className='w-full md:w-auto flex justify-end items-center gap-2 md:gap-5'>
         <Search />
         <div
-          className='relative text-xl bg-gray-200 w-12 h-12 flex justify-center items-center rounded-full hover:bg-gray-300 duration-300 cursor-pointer'
+          className='relative text-xl bg-gray-200 min-w-12 h-12 flex justify-center items-center rounded-full hover:bg-gray-300 duration-300 cursor-pointer'
           onClick={openCart}
         >
           <FontAwesomeIcon icon={faCartShopping} />
