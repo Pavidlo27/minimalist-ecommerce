@@ -48,7 +48,7 @@ const ShoppingCart = ({ isOpen }) => {
               to='/contact'
               onClick={closeCart}
             >
-              <button className='w-full h-14 text-xl text-white bg-[#b6002c]'>BUY NOW</button>
+              <button className='w-full h-14 text-xl text-white bg-[#b6002c] hover:brightness-110'>BUY NOW</button>
             </Link>
           </div>
         )}

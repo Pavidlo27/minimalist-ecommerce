@@ -1,7 +1,7 @@
 import React from 'react'
 import { getProds } from '../../api'
 import { Await, Link, defer, useLoaderData, useSearchParams } from 'react-router-dom'
-import SkeletonCategories from '@/components/SkeletonCategories'
+import SkeletonCategories from './SkeletonCategories'
 export function loader() {
   return defer({ prods: getProds() })
 }
@@ -10,23 +10,33 @@ const Categories = () => {
   const dataPromise = useLoaderData()
 
   const typeFilter = searchParams.get('type')
-
+  const searchFilter = searchParams.get('search') || '';
 
   function handleFilterChange(key, value) {
     setSearchParams(prevParams => {
       if (value === null) {
         prevParams.delete(key)
+        prevParams.delete('search')
       } else {
         prevParams.set(key, value)
+        prevParams.delete('search')
       }
       return prevParams
     })
   }
 
   function renderProdElements(prods) {
-    const displayedProds = typeFilter
+    const filteredProductsBySearch = prods.filter(product =>
+      product.name.toLowerCase().includes(searchFilter.toLowerCase())
+    );
+
+    const filteredProductsByType = typeFilter
       ? prods.filter(prod => prod.type === typeFilter)
       : prods
+
+    const displayedProds = searchFilter
+      ? filteredProductsBySearch
+      : filteredProductsByType
 
     const productElements = displayedProds.map(prod => (
       <Link
@@ -51,7 +61,7 @@ const Categories = () => {
       <>
         <div className='my-10 flex flex-wrap gap-3 justify-center'>
           <button
-            className={`px-5 py-1 border-2  ${typeFilter === null ? 'border-black' : ''}`}
+            className={`px-5 py-1 border-2  ${typeFilter === null && searchFilter === '' ? 'border-black' : ''}`}
             onClick={() => handleFilterChange('type', null)}
           >All</button>
           <button
@@ -78,9 +88,11 @@ const Categories = () => {
             className={`px-5 py-1 border-2 ${typeFilter === 'skin care' ? 'border-black' : ''}`}
             onClick={() => handleFilterChange('type', 'skin care')}
           >Skin Care</button>
-        </div>
-        <div className='grid gap-5 lg:grid-cols-4'>
-          {productElements}
+        </div >
+        <div className='relative grid gap-3 lg:grid-cols-4'>
+          {productElements.length > 0
+            ? productElements
+            : <p className=' absolute left-0 right-0 text-center'>No products found for '{searchFilter}'</p>}
         </div>
       </>
     )
@@ -91,7 +103,7 @@ const Categories = () => {
       <h1
         className='w-fit text-3xl font-semibold m-auto'
       >
-        {typeFilter ? typeFilter.toUpperCase() : 'ALL'}
+        {searchFilter ? searchFilter.toUpperCase() : (typeFilter ? typeFilter.toUpperCase() : 'ALL')}
       </h1>
       <React.Suspense fallback={<SkeletonCategories />}>
         <Await resolve={dataPromise.prods}>

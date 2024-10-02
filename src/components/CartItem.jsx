@@ -13,7 +13,7 @@ const CartItem = ({ cart }) => {
       <div className='flex flex-col ml-5 justify-center'>
         <div className='flex items-center'>
           <p className='text-xl  bg-slate-0'>{item.name}</p>
-          <p className='absolute md:static left-0 top-0 flex items-end ml-2 h-8 text-gray-500'>x{item.quantity}</p>
+          <p className='absolute left-2 top-0 flex items-end ml-2 h-8 text-gray-500'>x{item.quantity}</p>
         </div>
         <div className=' text-xl'>
           <span className='text-xl text-gray-500'>{item.price * item.quantity}.00$</span>

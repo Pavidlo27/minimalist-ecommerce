@@ -10,7 +10,7 @@ import { getNewProds } from '../../api';
 
 
 export default () => {
-  const [slidesPerViev, SetSlidesPerViev] = React.useState(4)
+  const [slidesPerViev, SetSlidesPerViev] = React.useState(3)
   const [prods, setProds] = useState([])
   const [error, setError] = React.useState()
   React.useEffect(() => {
@@ -44,7 +44,7 @@ export default () => {
     if (window.innerWidth <= 640) {
       SetSlidesPerViev(1.5)
     } else {
-      SetSlidesPerViev(4.5)
+      SetSlidesPerViev(3.5)
     }
   }
   useEffect(() => {
@@ -66,7 +66,7 @@ export default () => {
         modules={[Navigation, FreeMode]}
         navigation
         freeMode={true}
-        spaceBetween={20}
+        spaceBetween={12}
         slidesPerView={slidesPerViev}
         className='-mx-5 px-5 lg:-mx-14 lg:px-14'
       >

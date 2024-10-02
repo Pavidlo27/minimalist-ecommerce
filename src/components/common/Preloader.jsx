@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import logoImg from "../assets/images/logo.png";
+import logoImg from "../../assets/images/logo.png";
 
 export default function Preloader() {
   const [showLoader, setShowLoader] = useState(true);

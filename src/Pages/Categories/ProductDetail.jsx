@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { getProd } from '../../api'
 import { useLoaderData, useLocation, Link } from 'react-router-dom'
@@ -18,6 +18,12 @@ const ProductDetail = () => {
   const [price, setPrice] = useState(product.price)
 
   const { addToCart } = useShoppingCart()
+
+  useEffect(() => {
+    // Reset state when the URL changes
+    setQuantity(1);
+    setPrice(product.price);
+  }, [location.pathname]);
 
   function plus() {
     setQuantity(prev => prev + 1)
@@ -52,7 +58,7 @@ const ProductDetail = () => {
                 <button
                   onClick={() => minus()}
                   disabled={quantity === 1}
-                  className={`w-14 h-14 border-2 border-gray-300 active:border-black ${quantity === 1 && 'opacity-40'}`}
+                  className={`w-14 h-14 border-2 border-gray-300 ${quantity === 1 ? 'opacity-40' : 'active:border-black'}`}
                 >-</button>
               </li>
               <li className='w-14 h-14 border-y-2 border-gray-300 flex justify-center items-center'>{quantity}</li>
@@ -65,12 +71,12 @@ const ProductDetail = () => {
             </ul>
             <span className='mb-10 block'>{price}.00$</span>
             <button
-              className='w-full h-14 text-xl my-5 border-2 border-black'
+              className='w-full h-14 text-xl my-5 border-2 border-black hover:brightness-110'
               onClick={() => addToCart(product, quantity)}
             >ADD TO CART</button>
             <Link to='/contact'>
               <button
-                className='w-full h-14 text-xl text-white bg-[#b6002c]'
+                className='w-full h-14 text-xl text-white bg-[#b6002c] hover:brightness-110'
                 onClick={() => addToCart(product, quantity)}
               >BUY NOW</button>
             </Link>
