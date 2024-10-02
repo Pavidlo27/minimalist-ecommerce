@@ -1,7 +1,7 @@
 import React from 'react'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Search = () => {
   const [searchValue, setSearchValue] = React.useState('')
@@ -19,7 +19,7 @@ const Search = () => {
         type="text"
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
-        className="md:w-96 h-12 pl-5 pr-4 bg-gray-200 hover:bg-gray-300 duration-300 rounded-full"
+        className="md:w-96 w-full h-12 pl-5 pr-4 bg-gray-200 hover:bg-gray-300 duration-300 rounded-full"
         placeholder="Search..."
       />
       <button type='submit' className='absolute  right-4 top-1/2 transform -translate-y-1/2'>

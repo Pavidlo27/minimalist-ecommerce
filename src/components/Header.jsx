@@ -17,7 +17,7 @@ const Header = () => {
     <header className='p-5 lg:px-14 flex justify-between items-center'>
       <nav className='grid grid-flow-col gap-3 lg:gap-5 items-center text-xl'>
         <Link to='/' className='logo-header'>
-          <img className='w-16 sm:w-20' src={logo} alt="logo" />
+          <img className='max-w-16 sm:w-20' src={logo} alt="logo" />
         </Link>
         <NavLink
           to='categories'
@@ -82,7 +82,7 @@ const Header = () => {
           : <FontAwesomeIcon icon={faBars} />}
       </div>
 
-      <div className='flex items-center gap-3 md:gap-5'>
+      <div className='flex items-center gap-2 md:gap-5'>
         <Search />
         <div
           className='relative text-xl bg-gray-200 w-12 h-12 flex justify-center items-center rounded-full hover:bg-gray-300 duration-300 cursor-pointer'
