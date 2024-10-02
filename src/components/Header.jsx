@@ -64,13 +64,6 @@ const Header = () => {
         >
           CONTACT US
         </NavLink>
-
-        {/* <button
-          onClick={() => setIsOpen(false)}
-          className='fixed bottom-5 right-5 text-gray-500 hover:text-black'
-        >
-          <FontAwesomeIcon icon={faXmark} />
-        </button> */}
       </nav>
 
       <div
@@ -82,7 +75,7 @@ const Header = () => {
           : <FontAwesomeIcon icon={faBars} />}
       </div>
 
-      <div className='flex items-center gap-2 md:gap-5'>
+      <div className='w-full md:w-auto flex justify-end items-center gap-2 md:gap-5'>
         <Search />
         <div
           className='relative text-xl bg-gray-200 w-12 h-12 flex justify-center items-center rounded-full hover:bg-gray-300 duration-300 cursor-pointer'
