@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../assets/images/logo.png'
+import logo from '../assets/images/minimalistEcommerceIcon.png'
 import { Link, NavLink } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -16,8 +16,8 @@ const Header = () => {
   return (
     <header className='px-2 py-3 lg:px-14 flex justify-between items-center'>
       <nav className='grid grid-flow-col gap-3 lg:gap-5 items-center text-xl'>
-        <Link to='/' className='logo-header'>
-          <img className='max-w-16 sm:w-20' src={logo} alt="logo" />
+        <Link to='/' className='logo-header mr-2'>
+          <img className='w-12 sm:w-16' src={logo} alt="logo" />
         </Link>
         <NavLink
           to='categories'
