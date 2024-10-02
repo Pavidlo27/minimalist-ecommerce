@@ -8,7 +8,7 @@ import { useShoppingCart } from '../context/ShoppingCartContext'
 import Search from './Search'
 
 const Header = () => {
-  const [isOpen, setIsOpen] = React.useState(true)
+  const [isOpen, setIsOpen] = React.useState(false)
   const { openCart, cartQuantity } = useShoppingCart()
   const activeStyles = {
     color: "#161616"
