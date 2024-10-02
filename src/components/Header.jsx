@@ -14,7 +14,7 @@ const Header = () => {
     color: "#161616"
   }
   return (
-    <header className='p-5 lg:px-14 flex justify-between items-center'>
+    <header className='px-2 py-3 lg:px-14 flex justify-between items-center'>
       <nav className='grid grid-flow-col gap-3 lg:gap-5 items-center text-xl'>
         <Link to='/' className='logo-header'>
           <img className='max-w-16 sm:w-20' src={logo} alt="logo" />
