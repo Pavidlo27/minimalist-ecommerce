@@ -14,7 +14,7 @@ const SkeletonCategories = () => {
       <Skeleton className={`px-5 py-1 w-32 h-6`} />
       <Skeleton className={`px-5 py-1 w-32 h-6`} />
 
-      <div className='grid gap-5 lg:grid-cols-4 mt-5'>
+      <div className='grid gap-5 grid-cols-2 lg:grid-cols-4 mt-5'>
         {Array.from({ length: 8 }).map((_, index) => (
           <div key={index} >
             <Skeleton className={`w-[300px] h-[350px]`} />

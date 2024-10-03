@@ -23,7 +23,7 @@ const ShoppingCart = ({ isOpen }) => {
 
       {/* Shopping cart panel */}
       <div
-        className={`fixed top-0 right-0 h-screen w-full md:w-5/12  px-2 py-4 md:p-10 pb-5 overflow-y-auto flex flex-col justify-between bg-white shadow-lg z-50 transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300`}
+        className={`fixed top-0 right-0 min-h-screen w-full md:w-5/12  px-2 py-4 md:p-10 pb-5 overflow-y-auto flex flex-col justify-between bg-white shadow-lg z-50 transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300`}
       >
         <div>
           {/* Close button */}
