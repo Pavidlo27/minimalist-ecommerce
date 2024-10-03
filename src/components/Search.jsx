@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const Search = () => {
-  const [searchValue, setSearchValue] = React.useState('')
+  const [searchValue, setSearchValue] = useState('')
   const navigate = useNavigate()
+  const location = useLocation();
+
+  useEffect(() => {
+    // Reset search value when navigating to home page
+    if (location.pathname === '/') {
+      setSearchValue('');
+    }
+  }, [location]);
   function handleSearch(e) {
     e.preventDefault()
     if (searchValue) {

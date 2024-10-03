@@ -42,6 +42,9 @@ const Categories = () => {
       <Link
         to={`/categories/${prod.id}`}
         key={prod.id}
+        state={{
+          search: `?${searchParams.toString()}`,
+        }}
         data-aos="zoom-in-up"
       >
         <div className="border-2 border-gray-300 hover:border-black flex flex-col h-full">
