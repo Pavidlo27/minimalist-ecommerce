@@ -42,7 +42,7 @@ export default () => {
 
   const resize = () => {
     if (window.innerWidth <= 640) {
-      SetSlidesPerViev(1.5)
+      SetSlidesPerViev(1.4)
     } else {
       SetSlidesPerViev(3.5)
     }

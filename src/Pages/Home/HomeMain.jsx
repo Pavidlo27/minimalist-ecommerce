@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 const HomeMain = () => {
   return (
     <section className='mb-20'>
-      <ul className='grid grid-cols-2 grid-rows-2 gap-3 text-2xl text-white font-semibold
+      <ul className='grid grid-cols-2 grid-rows-2 gap-2 md:gap-3 text-2xl text-white font-semibold
       lg:grid-cols-[2fr_1fr_1fr] lg:text-4xl'>
         <li className='relative lg:row-start-1 lg:row-end-3' data-aos="zoom-in">
           <Link to='categories' >
