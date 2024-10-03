@@ -23,7 +23,7 @@ const Layout = () => {
       <Preloader />
       <GoToTop />
       <Header />
-      <main className='px-2 lg:px-14 lg:pt-0 overflow-hidden'>
+      <main className='px-2 mt-20 lg:px-14 md:pt-24 overflow-hidden'>
         <Outlet />
       </main>
       <Toaster />

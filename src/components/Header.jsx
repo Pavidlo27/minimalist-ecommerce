@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '../assets/images/minimalistEcommerceIcon.png'
 import { Link, NavLink } from 'react-router-dom'
 
@@ -8,13 +8,31 @@ import { useShoppingCart } from '../context/ShoppingCartContext'
 import Search from './Search'
 
 const Header = () => {
-  const [isOpen, setIsOpen] = React.useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const { openCart, cartQuantity } = useShoppingCart()
+
+  const [isVisible, setIsVisible] = useState(true);
+  const [scrollY, setScrollY] = useState(0);
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+    setIsVisible(scrollY > currentScrollY || currentScrollY < 80);
+    setScrollY(currentScrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrollY]);
+
   const activeStyles = {
     color: "#161616"
   }
   return (
-    <header className='px-2 py-3 lg:px-14 flex justify-between items-center'>
+    <header className={` fixed z-40 bg-white w-full px-2 py-3 lg:px-14 flex justify-between items-center duration-500 ease-in-out ${isVisible ? 'top-0' : '-top-40'}`}>
       <nav className='grid grid-flow-col gap-3 lg:gap-5 items-center text-xl'>
         <Link to='/' className='logo-header w-12 sm:w-16 mr-2'>
           <img src={logo} alt="logo" />
@@ -41,12 +59,14 @@ const Header = () => {
           CONTACT US
         </NavLink>
       </nav>
+
       {/* MOBILE NAV */}
       <nav className={`fixed z-40 inset-0 bg-white flex-col justify-center gap-3 items-center text-xl ${isOpen ? 'flex' : 'hidden'}`}>
         <NavLink
           to='categories'
           className='text-gray-500 hover:text-black'
           style={({ isActive }) => isActive ? activeStyles : null}
+          onClick={() => setIsOpen(false)}
         >
           CATEGORIES
         </NavLink>
@@ -54,6 +74,7 @@ const Header = () => {
           to='about'
           className='text-gray-500 hover:text-black'
           style={({ isActive }) => isActive ? activeStyles : null}
+          onClick={() => setIsOpen(false)}
         >
           ABOUT
         </NavLink>
@@ -61,6 +82,7 @@ const Header = () => {
           to='contact'
           className='text-gray-500 hover:text-black'
           style={({ isActive }) => isActive ? activeStyles : null}
+          onClick={() => setIsOpen(false)}
         >
           CONTACT US
         </NavLink>
