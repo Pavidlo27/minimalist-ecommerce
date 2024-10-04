@@ -1,78 +1,77 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Navigation } from 'swiper/modules'
+import { FreeMode, Navigation } from 'swiper/modules';
 
 import 'swiper/css';
-import 'swiper/css/free-mode'
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation'; // Import navigation styles
 
 import { getNewProds } from '../../api';
 
-
 export default () => {
-  const [slidesPerViev, SetSlidesPerViev] = React.useState(3)
-  const [prods, setProds] = useState([])
-  const [error, setError] = React.useState()
-  React.useEffect(() => {
+  const [slidesPerView, setSlidesPerView] = useState(3);
+  const [prods, setProds] = useState([]);
+  const [error, setError] = useState();
+
+  useEffect(() => {
     async function loadProds() {
       try {
-        const data = await getNewProds()
-        setProds(data)
+        const data = await getNewProds();
+        setProds(data);
       } catch (err) {
-        setError(err)
+        setError(err);
       }
     }
 
-    loadProds()
-  }, [])
+    loadProds();
+  }, []);
 
   const productElements = prods.map(prod => (
     <SwiperSlide key={prod.id}>
-      <Link to={`/categories/${prod.id}`} >
-        <div key={prod.id} className=' border-2 border-gray-300 hover:border-black' data-aos='zoom-in-up'>
+      <Link to={`/categories/${prod.id}`}>
+        <div className='border-2 border-gray-300 hover:border-black' data-aos='zoom-in-up'>
           <img src={prod.firstImg} alt="" />
           <div className='p-3'>
-            <h3 className='text-lg '>{prod.name}</h3>
+            <h3 className='text-lg'>{prod.name}</h3>
             <p className='text-lg font-semibold'>{prod.price}.00$</p>
           </div>
         </div>
       </Link>
     </SwiperSlide>
-  ))
+  ));
 
   const resize = () => {
     if (window.innerWidth <= 640) {
-      SetSlidesPerViev(1.4)
+      setSlidesPerView(1.4);
     } else {
-      SetSlidesPerViev(3.5)
+      setSlidesPerView(3.5);
     }
-  }
+  };
+
   useEffect(() => {
     window.addEventListener('resize', resize);
-    resize()
+    resize();
     return () => {
       window.removeEventListener('resize', resize);
     };
-  }, [])
+  }, []);
 
   return (
-    <div>
-      <h2
-        className='text-2xl font-semibold mb-10'
-        data-aos='fade-up'
-      >Trending Now</h2>
+    <div className='relative'>
+      <h2 className='text-2xl font-semibold mb-10' data-aos='fade-up'>
+        Trending Now
+      </h2>
       {error && <h1 className='text-xl'>{error}</h1>}
       <Swiper
         modules={[Navigation, FreeMode]}
         navigation
         freeMode={true}
         spaceBetween={12}
-        slidesPerView={slidesPerViev}
+        slidesPerView={slidesPerView}
         className='-mx-5 px-5 lg:-mx-14 lg:px-14'
       >
-        <div>
-          {productElements}
-        </div>
+        {productElements}
       </Swiper>
     </div>
   );

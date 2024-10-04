@@ -30,3 +30,23 @@
     transform: rotate(360deg);
   }
 }
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #000;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+}
+
+/* Change color on hover */
+/* .swiper-button-next:hover,
+.swiper-button-prev:hover {
+  
+} */
