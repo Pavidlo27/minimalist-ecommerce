@@ -1,10 +1,10 @@
 import React from 'react'
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom'
 import Layout from './components/Layout'
-import Home from './Pages/Home/Home'
+import Home from './Pages/home/Index'
 import About from './Pages/About'
-import Categories, { loader as categoriesLoader } from './Pages/categories/Categories'
-import ProductDetail, { loader as productDetailLoader } from './Pages/categories/ProductDetail'
+import Store, { loader as StoreLoader } from './Pages/store/Index'
+import ProductDetail, { loader as productDetailLoader } from './Pages/store/ProductDetail'
 import NotFound from './Pages/NotFound'
 import Error from './components/Error'
 
@@ -22,8 +22,8 @@ const App = () => {
       <Route path='contact' element={<ContactUs />} />
       <Route
         path='categories'
-        element={<Categories />}
-        loader={categoriesLoader}
+        element={<Store />}
+        loader={StoreLoader}
         errorElement={<Error />}
       />
       <Route

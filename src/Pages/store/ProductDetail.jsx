@@ -4,7 +4,7 @@ import { getProd } from '../../api'
 import { useLoaderData, useLocation, Link } from 'react-router-dom'
 
 import ProductCarousel from './ProductCarousel'
-import HomeCarousel from '../Home/HomeCarousel'
+import HomeCarousel from '../home/HomeCarousel'
 import { useShoppingCart } from '../../context/ShoppingCartContext'
 
 export function loader({ params }) {

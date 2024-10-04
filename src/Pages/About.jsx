@@ -1,5 +1,5 @@
 import React from 'react'
-import HomeProud from './Home/HomeProud'
+import HomeProud from './home/HomeProud'
 
 import image from '@/assets/images/Designer.jpeg'
 

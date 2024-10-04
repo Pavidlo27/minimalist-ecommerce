@@ -7,7 +7,7 @@ import HomeCarousel from './HomeCarousel'
 
 import bannerImg1 from '../../assets/images/bannerImg1.jpg'
 import bannerImg2 from '../../assets/images/bannerImg2.jpg'
-import FAQ from '../../components/FAQ'
+import FAQ from './Faq'
 
 
 const Home = () => {
