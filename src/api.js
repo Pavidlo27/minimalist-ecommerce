@@ -9,14 +9,15 @@ import {
   where,
 } from "firebase/firestore/lite";
 
+// when i use .env i get an error on vercel so left configs like this until i fix it
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+  apiKey: "AIzaSyA0Td7JxhDGaC4GDxjWZbMgtcu5TnWnO58",
+  authDomain: "minimalist-ecomerce.firebaseapp.com",
+  projectId: "minimalist-ecomerce",
+  storageBucket: "minimalist-ecomerce.appspot.com",
+  messagingSenderId: "20752940568",
+  appId: "1:20752940568:web:eee3e5e17aa6f125010d6d",
+  measurementId: "G-FXFBP37M08",
 };
 
 const app = initializeApp(firebaseConfig);
