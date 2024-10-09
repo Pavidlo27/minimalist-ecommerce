@@ -19,6 +19,7 @@ const Product = ({ prod, searchParams }) => {
         <img
           src={prod.firstImg}
           alt="product-image"
+          liading="lazy"
           className={`transition-opacity ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           onLoad={() => setIsLoaded(true)}
         />
