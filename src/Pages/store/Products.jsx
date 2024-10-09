@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-
+import loaderImg from '@/assets/images/BlackDot.png'
 const Products = ({ displayedProds, searchParams, searchFilter }) => {
+  const [isHighResolutionLoaded, setIsHighResolutionLoaded] = useState(false)
   const productElements = displayedProds.map(prod => (
     <Link
       to={`/categories/${prod.id}`}
@@ -12,7 +13,8 @@ const Products = ({ displayedProds, searchParams, searchFilter }) => {
       data-aos="zoom-in-up"
     >
       <div className="border-2 border-gray-300 hover:border-black flex flex-col h-full">
-        <img src={prod.firstImg} alt="product-image" />
+        <img src={loaderImg} alt="" className={`${isHighResolutionLoaded ? 'hidden' : ''}`} />
+        <img src={prod.firstImg} alt="product-image" className={`${isHighResolutionLoaded ? '' : 'hidden'}`} onLoad={() => setIsHighResolutionLoaded(true)} />
         <div className="p-3 flex-grow flex flex-col">
           <h3 className="text-lg">{prod.name}</h3>
           <p className="text-lg font-semibold mt-auto">{prod.price}.00$</p>
