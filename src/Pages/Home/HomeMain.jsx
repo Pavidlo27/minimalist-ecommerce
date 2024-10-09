@@ -23,7 +23,7 @@ const HomeMain = () => {
               alt=""
               className={`absolute transition-opacity ${isLoaded ? 'opacity-0' : 'opacity-100 blur-md'} w-full h-60 lg:h-[492px] object-cover brightness-75 hover:brightness-50 duration-500 cursor-pointer`} />
             <img
-              className={`${isLoaded ? '' : 'hidden'} w-full h-60 lg:h-[492px] object-cover brightness-75 hover:brightness-50 duration-500 cursor-pointer`}
+              className={`${!isLoaded && 'hidden'} w-full h-60 lg:h-[492px] object-cover brightness-75 hover:brightness-50 duration-500 cursor-pointer`}
               src={img1}
               alt="Live Comfortably"
             />
@@ -39,7 +39,7 @@ const HomeMain = () => {
               alt=""
               className={`${isLoaded ? 'hidden' : 'blur-md'} w-full h-60 lg:h-[492px] object-cover brightness-75 hover:brightness-50 duration-500 cursor-pointer`} />
             <img
-              className={`${isLoaded ? '' : 'hidden'} w-full h-60 lg:h-[492px] object-cover brightness-75 hover:brightness-50 duration-500 cursor-pointer`}
+              className={`${!isLoaded && 'hidden'} w-full h-60 lg:h-[492px] object-cover brightness-75 hover:brightness-50 duration-500 cursor-pointer`}
               src={img2}
               alt="Live Comfortably"
             />
