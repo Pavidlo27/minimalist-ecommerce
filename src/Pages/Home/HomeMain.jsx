@@ -13,7 +13,7 @@ const HomeMain = () => {
   const [isLoaded, setIsLoaded] = useState(false)
   const handleLoad = () => setIsLoaded(true)
   return (
-    <section className='mb-20' onLoad={handleLoad}>
+    <section className='mb-20'>
       <ul className='grid grid-cols-2 grid-rows-2 gap-2 md:gap-3 text-2xl text-white font-semibold
       lg:grid-cols-[2fr_1fr_1fr] lg:text-4xl'>
         <li className='relative lg:row-start-1 lg:row-end-3  overflow-hidden' data-aos="zoom-in">
@@ -26,6 +26,7 @@ const HomeMain = () => {
               className={`${!isLoaded && 'hidden'} w-full h-60 lg:h-[492px] object-cover brightness-75 hover:brightness-50 duration-500 cursor-pointer`}
               src={img1}
               alt="Live Comfortably"
+              onLoad={handleLoad}
             />
             <span
               className='absolute bottom-5 left-3 cursor-pointer'
