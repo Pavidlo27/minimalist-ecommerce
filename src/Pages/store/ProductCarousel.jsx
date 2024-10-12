@@ -10,10 +10,13 @@ function ProductCarousel({ product }) {
 
   const [activeImg, setActiveImg] = useState(imgs[0]);
   const [isLoaded, setIsLoaded] = useState(false); // For each active image loading
-
+  console.log(activeImg)
   const handleClick = (index) => {
-    setIsLoaded(false);
-    setActiveImg(imgs[index]);
+    // Only set the active image if the image is not already active
+    if (activeImg.id !== index) {
+      setIsLoaded(false);
+      setActiveImg(imgs[index]);
+    }
   };
 
   // Reset the active image when the product changes
@@ -25,11 +28,11 @@ function ProductCarousel({ product }) {
   return (
     <div className="w-full mr-6 lg:w-1/2 lg:p-16">
       {/* Main Image */}
-      <div className='overflow-hidden rounded-md bg-slate-200'>
+      <div className='relative overflow-hidden rounded-md bg-slate-200'>
         <img
           src={loaderImg}
           alt="loading"
-          className={`object-cover w-full h-full ${isLoaded ? 'hidden' : ''}`}
+          className={`absolute object-cover w-full h-full ${isLoaded ? 'hidden' : ''}`}
         />
         <img
           src={activeImg.value}
