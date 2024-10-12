@@ -15,7 +15,7 @@ const Product = ({ prod, searchParams }) => {
     >
       <div className="relative border-2 border-gray-300 hover:border-black flex flex-col h-full">
         <div
-          className={` absolute top-0 left-0 right-0 bottom-20 flex items-center justify-center transition-opacity ${isLoaded ? 'hidden' : 'block'} duration-300`}
+          className={` h-64 flex items-center justify-center transition-opacity ${isLoaded ? 'hidden' : 'block'} duration-300`}
         >
           <div className="loader"></div>
         </div>
