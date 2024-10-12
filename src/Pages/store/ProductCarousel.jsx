@@ -28,12 +28,13 @@ function ProductCarousel({ product }) {
   return (
     <div className="w-full mr-6 lg:w-1/2 lg:p-16">
       {/* Main Image */}
-      <div className='relative overflow-hidden rounded-md bg-slate-200'>
-        <img
-          src={loaderImg}
-          alt="loading"
-          className={`absolute object-cover w-full h-full ${isLoaded ? 'hidden' : ''}`}
-        />
+      <div className='relative overflow-hidden rounded-md bg-slate-100'>
+        <div
+          className={`absolute object-cover inset-0 flex justify-center items-center ${isLoaded ? 'hidden' : ''}`}
+        >
+          <div className='loader'></div>
+        </div>
+
         <img
           src={activeImg.value}
           alt="product-image"

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import loaderImg from '@/assets/images/BlackDot.png'
 
 const Product = ({ prod, searchParams }) => {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -15,7 +14,11 @@ const Product = ({ prod, searchParams }) => {
       data-aos="zoom-in-up"
     >
       <div className="relative border-2 border-gray-300 hover:border-black flex flex-col h-full">
-        <img src={loaderImg} alt="loading" className={`absolute transition-opacity ${isLoaded ? 'opacity-0' : 'opacity-100'}`} />
+        <div
+          className={` absolute top-0 left-0 right-0 bottom-20 flex items-center justify-center transition-opacity ${isLoaded ? 'hidden' : 'block'} duration-300`}
+        >
+          <div className="loader"></div>
+        </div>
         <img
           src={prod.firstImg}
           alt="product-image"
