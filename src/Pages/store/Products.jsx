@@ -15,7 +15,7 @@ const Product = ({ prod, searchParams }) => {
     >
       <div className="relative border-2 border-gray-300 hover:border-black flex flex-col">
         <div
-          className={`aspect-square w-full bg-fuchsia-100 flex items-center justify-center transition-opacity ${isLoaded ? 'hidden' : 'block'} duration-300`}
+          className={`aspect-square w-full flex items-center justify-center transition-opacity ${isLoaded ? 'hidden' : 'block'} duration-300`}
         >
           <div className="loader"></div>
         </div>
