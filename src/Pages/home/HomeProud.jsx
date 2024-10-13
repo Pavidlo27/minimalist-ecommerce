@@ -41,14 +41,14 @@ const HomeProud = () => {
         key={prod.id}
         data-aos='zoom-in-up'
       >
-        <div className='border-2 border-gray-300 hover:border-black'>
+        <div className='relative border-2 border-gray-300 hover:border-black flex flex-col h-full'>
           {/* Image with loading state */}
           <div className='relative overflow-hidden bg-gray-200'>
-            <img
-              src={loaderImg}
-              alt="loading"
-              className={`object-cover w-full ${loadedImages[prod.id] ? 'hidden' : 'block'}`} // Show loader image until loaded
-            />
+            <div
+              className={`aspect-square w-full flex items-center justify-center ${loadedImages[prod.id] ? 'hidden' : 'block'} `}
+            >
+              <div className="loader"></div>
+            </div>
             <img
               src={prod.firstImg}
               alt="product"
@@ -56,9 +56,9 @@ const HomeProud = () => {
               onLoad={() => handleImageLoad(prod.id)}
             />
           </div>
-          <div className='p-3'>
-            <h3 className='text-lg'>{prod.name}</h3>
-            <p className='text-lg font-semibold'>{prod.price}.00$</p>
+          <div className="p-3 flex-grow flex flex-col">
+            <h3 className="text-lg">{prod.name}</h3>
+            <p className="text-lg font-semibold mt-auto">{prod.price}.00$</p>
           </div>
         </div>
       </Link>
@@ -68,7 +68,7 @@ const HomeProud = () => {
     <section>
       <h2 className='my-10 text-2xl font-semibold'>Products we are proud of</h2>
       {error && <h1 className='text-xl text-red-500'>{error}</h1>} {/* Styled error message */}
-      <div className='grid gap-3 md:grid-cols-2 lg:grid-cols-4'>
+      <div className='grid gap-3  md:grid-cols-4'>
         {productElements}
       </div>
       <button

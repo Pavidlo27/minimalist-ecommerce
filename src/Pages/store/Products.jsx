@@ -11,9 +11,8 @@ const Product = ({ prod, searchParams }) => {
       state={{
         search: `?${searchParams.toString()}`,
       }}
-    // data-aos="zoom-in-up"
     >
-      <div className="relative border-2 border-gray-300 hover:border-black flex flex-col">
+      <div className="relative border-2 border-gray-300 hover:border-black flex flex-col h-full">
         <div
           className={`aspect-square w-full flex items-center justify-center ${isLoaded ? 'hidden' : 'block'} `}
         >
@@ -35,14 +34,14 @@ const Product = ({ prod, searchParams }) => {
   );
 };
 
+
 const Products = ({ displayedProds, searchParams, searchFilter }) => {
-  // Use a more descriptive variable name
   const productElements = displayedProds.map(prod => (
     <Product key={prod.id} prod={prod} searchParams={searchParams} />
   ));
 
   return (
-    <div className='relative grid gap-3 grid-cols-2 lg:grid-cols-4'>
+    <div className='relative grid gap-3 grid-cols-2 lg:grid-cols-4 auto-rows-fr'>
       {productElements.length > 0 ? (
         productElements
       ) : (
@@ -51,5 +50,6 @@ const Products = ({ displayedProds, searchParams, searchFilter }) => {
     </div>
   );
 };
+
 
 export default Products;
